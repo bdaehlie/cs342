@@ -4,7 +4,7 @@
 #include "crypto-utils.h"
 #include "base64.h"
 
-// Compile with: gcc challenge1.c -g -o challenge1
+// Compile with: gcc challenge1.c base64.c crypto-utils.c -g -o challenge1
 
 static char* sInputStr = "49276d206b696c6c696e6720796f7572"
                          "20627261696e206c696b65206120706f"
