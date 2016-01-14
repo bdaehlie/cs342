@@ -2,16 +2,16 @@
 #include <string.h>
 #include <stdio.h>
 
-// Compile with: gcc challenge1.c -o challenge1
+// Compile with: gcc challenge1.c -g -o challenge1
 
-static char* sInputStr = "49276d206b696c6c696e6720796f75722"
-                        "0627261696e206c696b65206120706f69"
-                        "736f6e6f7573206d757368726f6f6d";
+static char* sInputStr = "49276d206b696c6c696e6720796f7572"
+                         "20627261696e206c696b65206120706f"
+                         "69736f6e6f7573206d757368726f6f6d";
+
 static char* sOutputStr = "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBs"
-                         "aWtlIGEgcG9pc29ub3VzIG11c2hyb29t";
+                          "aWtlIGEgcG9pc29ub3VzIG11c2hyb29t";
 
 short hexCharToByte(char aHexChar) {
-  printf("Debug: %c\n", aHexChar);
   if (aHexChar >= 48 && aHexChar <= 58) {
     return aHexChar - 48;
   }
@@ -23,19 +23,19 @@ short hexCharToByte(char aHexChar) {
 }
 
 // returns a malloc'd byte buffer, caller frees
-unsigned short* hexStrToBytes(char* aInHexStr, unsigned int* aOutLen) {
+unsigned short* hexStrToBytes(char* aHexStr, unsigned int* aOutLen) {
   // need valid input
-  if (!aInHexStr) {
+  if (!aHexStr) {
     return NULL;
   }
 
   // need an even number of hex digits to convert to bytes
-  if (strlen(aInHexStr) % 2 != 0) {
+  if (strlen(aHexStr) % 2 != 0) {
     return NULL;
   }
 
   // calculate the length of the output buffer
-  *aOutLen = strlen(aInHexStr) / 2;
+  *aOutLen = strlen(aHexStr) / 2;
   if (*aOutLen == 0) {
     return NULL;
   }
@@ -47,18 +47,24 @@ unsigned short* hexStrToBytes(char* aInHexStr, unsigned int* aOutLen) {
   }
 
   // fill the output buffer
-  unsigned int inputLen = strlen(aInHexStr);
+  unsigned int inputLen = strlen(aHexStr);
   for (unsigned int i = 0; i < inputLen; i = i + 2) {
-    char c1 = aInHexStr[i];
-    char c2 = aInHexStr[i + 1];
+    char char1 = aHexStr[i];
+    char char2 = aHexStr[i + 1];
+
     unsigned short byte = 0;
-    byte = hexCharToByte(c1) << 4;
-    byte = byte | hexCharToByte(c2);
+
+    byte = hexCharToByte(char1) << 4;
+    byte = byte | hexCharToByte(char2);
+
+    outBuf[i / 2] = byte;
   }
+
+  return outBuf;
 }
 
 char* bytesToB64Str(unsigned short* aInput) {
-  
+  return NULL;
 }
 
 int main(int argc, char *argv[]) {
@@ -80,5 +86,7 @@ int main(int argc, char *argv[]) {
   } else {
     printf("Failure!\n");
   }
+
+  return 0;
 }
 
