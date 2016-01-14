@@ -1,5 +1,3 @@
-short hexCharToByte(char aHexChar);
+char hexCharToByte(char aHexChar);
 
-unsigned short* hexStrToBytes(char* aHexStr, unsigned int* aOutLen);
-
-char* bytesToB64Str(unsigned short* aInput);
+char* hexStrToBytes(char* aHexStr, int* aOutLen);

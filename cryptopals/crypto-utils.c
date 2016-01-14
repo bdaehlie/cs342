@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "crypto-utils.h"
 
-short hexCharToByte(char aHexChar) {
+char hexCharToByte(char aHexChar) {
   if (aHexChar >= 48 && aHexChar <= 58) {
     return aHexChar - 48;
   }
@@ -15,7 +15,7 @@ short hexCharToByte(char aHexChar) {
 }
 
 // returns a malloc'd byte buffer, caller frees
-unsigned short* hexStrToBytes(char* aHexStr, unsigned int* aOutLen) {
+char* hexStrToBytes(char* aHexStr, int* aOutLen) {
   // need valid input
   if (!aHexStr) {
     return NULL;
@@ -33,18 +33,18 @@ unsigned short* hexStrToBytes(char* aHexStr, unsigned int* aOutLen) {
   }
 
   // create output buffer
-  unsigned short *outBuf = malloc(*aOutLen);
+  char *outBuf = malloc(*aOutLen);
   if (!outBuf) {
     return NULL;
   }
 
   // fill the output buffer
-  unsigned int inputLen = strlen(aHexStr);
-  for (unsigned int i = 0; i < inputLen; i = i + 2) {
+  int inputLen = strlen(aHexStr);
+  for (int i = 0; i < inputLen; i = i + 2) {
     char char1 = aHexStr[i];
     char char2 = aHexStr[i + 1];
 
-    unsigned short byte = 0;
+    char byte = 0;
 
     byte = hexCharToByte(char1) << 4;
     byte = byte | hexCharToByte(char2);
@@ -53,8 +53,4 @@ unsigned short* hexStrToBytes(char* aHexStr, unsigned int* aOutLen) {
   }
 
   return outBuf;
-}
-
-char* bytesToB64Str(unsigned short* aInput) {
-  return NULL;
 }
