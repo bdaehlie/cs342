@@ -1,6 +1,7 @@
-=== VirtualBox ===
+VirtualBox
+==========
 
-https://www.virtualbox.org/
+[https://www.virtualbox.org/](https://www.virtualbox.org/)
 
 1. You’ll want to install the VirtualBox guest additions into your VM.
 
@@ -14,9 +15,10 @@ Once you’re booted into your VM you can install the guest additions from the D
 
 This will add a bunch of features including USB support.
 
-=== Fedora ===
+Fedora
+======
 
-https://getfedora.org/
+[https://getfedora.org/](https://getfedora.org/)
 
 1. You’ll want to update your VM every week or so with the following command:
 
