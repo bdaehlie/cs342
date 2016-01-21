@@ -22,19 +22,20 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  char *b64Str = malloc(Base64encode_len(bytesLen));
-  if (!b64Str) {
+  char *base64Str = malloc(Base64encode_len(bytesLen));
+  if (!base64Str) {
     printf("Failure! Couldn't alloc buffer for base64 string.\n");
     return 1;
   }
-  Base64encode(b64Str, bytes, bytesLen);
+  Base64encode(base64Str, bytes, bytesLen);
 
-  if (strcmp(b64Str, sOutputStr) == 0) {
+  if (strcmp(base64Str, sOutputStr) == 0) {
     printf("Success!\n");
   } else {
     printf("Failure!\n");
   }
 
+  free(base64Str);
+
   return 0;
 }
-

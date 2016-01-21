@@ -4,11 +4,11 @@
 #include "crypto-utils.h"
 
 char hexCharToByte(char aHexChar) {
-  if (aHexChar >= 48 && aHexChar <= 58) {
-    return aHexChar - 48;
+  if (aHexChar >= '0' && aHexChar <= '9') {
+    return aHexChar - '0';
   }
-  if (aHexChar >= 97 && aHexChar <= 122) {
-    return aHexChar - 87;
+  if (aHexChar >= 'a' && aHexChar <= 'f') {
+    return (aHexChar - ('a' - 10));
   }
   printf("Failure! Invalid hex character.\n");
   exit(1);
@@ -17,7 +17,7 @@ char hexCharToByte(char aHexChar) {
 // returns a malloc'd byte buffer, caller frees
 char* hexStrToBytes(char* aHexStr, int* aOutLen) {
   // need valid input
-  if (!aHexStr) {
+  if (!aHexStr || !aOutLen) {
     return NULL;
   }
 
