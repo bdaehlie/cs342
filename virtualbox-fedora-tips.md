@@ -21,8 +21,8 @@ Guest Additions
 
 You’ll want to install the VirtualBox guest additions into your VM.
 
-Before doing this install kernel headers by running the following command:
+Before doing this install kernel headers and gcc by running the following command:
 
-    sudo dnf install kernel-devel
+    sudo dnf install gcc kernel-devel
 
 Once you’re booted into your VM you can install the guest additions from the Devices menu. Tell it to “Insert Guest Additions CD image...”. It should autorun. You’ll need to re-install the guest additions every time you update your kernel.
