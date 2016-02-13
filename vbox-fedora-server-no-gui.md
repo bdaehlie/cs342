@@ -23,7 +23,7 @@ You’ll want to update your VM as soon as you're done rebooting after installin
 Install Basic Development Software
 ----------------------------------
 
-    sudo dnf install git gcc kernel-devel vim tar bzip2 zip
+    sudo dnf install git gcc kernel-devel vim tar bzip2 zip bc openssl-devel
 
 Install VirtualBox Guest Additions
 ----------------------------------

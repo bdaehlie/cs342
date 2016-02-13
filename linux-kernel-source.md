@@ -8,6 +8,7 @@ https://github.com/torvalds/linux
 
 Download:
 `curl -LO https://github.com/torvalds/linux/archive/v4.4.zip`
+Unzip it using the command `unzip v4.4.zip`
 
 Clone Command:
 `git clone https://github.com/torvalds/linux.git`
