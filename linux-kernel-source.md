@@ -1,26 +1,24 @@
 Linux Kernel Source Code
+------------------------
 
 Getting It
-----------
+==========
 
-GitHub Page:
-https://github.com/torvalds/linux
-
-Download:
-`curl -LO https://github.com/torvalds/linux/archive/v4.4.zip`
-Unzip it using the command `unzip v4.4.zip`
-
-Clone Command:
-`git clone https://github.com/torvalds/linux.git`
+* Git
+  * https://github.com/torvalds/linux
+  * Clone Command: `git clone https://github.com/torvalds/linux.git`
+* Download
+  * `curl -LO https://github.com/torvalds/linux/archive/v4.4.zip`
+  * Unzip it using the command `unzip v4.4.zip`
 
 Searching It
-------------
+============
 
-Linux Cross Reference (LXR):
-http://lxr.free-electrons.com/
+* Linux Cross Reference (LXR)
+  * http://lxr.free-electrons.com/
 
 Key Locations
--------------
+=============
 
 * `task_struct`: Generic thread information struct, used on all platforms.
   * include/linux/sched.h
