@@ -30,3 +30,5 @@ Key Locations
   * kernel/fork.c
 * `forget_original_parent(...)`: Reparents a task after its parent task has exited.
   * kernel/exit.c
+* `context_switch(...)`: Main context switch function.
+  * kernel/sched/core.c
