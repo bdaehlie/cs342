@@ -8,10 +8,10 @@ Fedora Server Installer
 
 https://getfedora.org/en/server/download/
 
-Install in Text Mode
+Installation
 --------------------
 
-Hit 'tab' in the initial boot screen, in the boot command change text `` to `inst.text`.
+For "Software Selection" select "Minimal Install". Do everything else normally.
 
 Updates
 -------
