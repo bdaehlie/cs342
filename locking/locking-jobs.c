@@ -21,9 +21,9 @@
 //
 // $ ./locking-jobs | uniq -d
 
-#define JOB_COUNT 1000000
+#define THREAD_COUNT 2
 
-uint64_t jobs_completed = 0;
+int64_t jobs_available = 1000000;
 
 void do_job(uint64_t job_id) {
   for (int i = 0; i < 5; i++) {
@@ -34,26 +34,31 @@ void do_job(uint64_t job_id) {
 
 void *do_jobs(void *thread_id)
 {
-  printf("Thread #%p reporting for duty!\n", thread_id);
+  int64_t current_job = 0;
+  while (true) {
+    current_job = jobs_available;
+    if (current_job < 1) {
+      break;
+    }
+    jobs_available--;
 
-  while (jobs_completed < JOB_COUNT) {
-    do_job(jobs_completed + 1);
-    jobs_completed++;
+    do_job(current_job);
   }
 
   pthread_exit(NULL);
 }
 
 int main(int argc, char **argv) {
-  for (long i = 0; i < 2; i++) {
-    pthread_t thread;
-    if (pthread_create(&thread, NULL, do_jobs, (void*)i) != 0) {
+  pthread_t threads[THREAD_COUNT];
+  for (int i = 0; i < THREAD_COUNT; i++) {
+    if (pthread_create(&threads[i], NULL, do_jobs, (void*)(long)i) != 0) {
       printf("Thread creation error!\n");
     }
-    pthread_detach(thread);
   }
 
-  pthread_exit(NULL);
+  for (int i = 0; i < THREAD_COUNT; i++) {
+    pthread_join(threads[i], NULL);
+  }
 
   return 0;
 }
