@@ -1,10 +1,11 @@
 #include <unistd.h>
+#include <stdint.h>
 #include <sys/types.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <pthread.h>
 
-// gcc locking-jobs.c -g -o locking-jobs
+// gcc -pthread -g -o locking-jobs locking-jobs.c
 
 // Tips
 //
@@ -15,6 +16,10 @@
 // Then you can look for duplicate lines in the file like this:
 //
 // $ cat output.txt | uniq -d
+//
+// Alternatively you can skip the file and just pipe to uniq:
+//
+// $ ./locking-jobs | uniq -d
 
 #define JOB_COUNT 1000000
 
